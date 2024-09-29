@@ -1,91 +1,168 @@
 version: "3.1"
-
+# intent: high level goals of a user (e.g., greet, goodbye)
+# example: user utterances that express the intent
+# entities: [...](...) information to extract
+# for defining intents
 nlu:
+# basics
 - intent: greet
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - "Hello"
+    - "Hi there"
+    - "Hey!"
+    - "Good morning"
+    - "Good evening"
+    - "Hi Chatbot"
+    - "Hello there"
 
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - "Goodbye"
+    - "See you later"
+    - "Bye!"
+    - "Talk to you soon"
+    - "Have a nice day"
+    - "Farewell"
+    - "Catch you later"
 
-- intent: affirm
+- intent: thank_you
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+    - "Thank you"
+    - "Thanks a lot"
+    - "Much appreciated"
+    - "Thanks for your help"
+    - "Thank you very much"
+    - "Thanks!"
+    - "I appreciate it"
 
-- intent: deny
+# flights
+- intent: check_flights
   examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+    - "I want to fly from [New York](departure_city) to [London](destination_city) on [June 5th](date)"
+    - "Find me flights departing [Paris](departure_city) to [Berlin](destination_city) next [Friday](date)"
+    - "Show available flights from [Los Angeles](departure_city) to [Tokyo](destination_city) on [August 20th](date)"
+    - "Looking for a flight from [Chicago](departure_city) to [Dubai](destination_city) leaving [July 15th](date)"
+    - "Search flights departing [Toronto](departure_city) heading to [Sydney](destination_city) on [September 10th](date)"
 
-- intent: mood_great
+- intent: ask_flight_status
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - "What's the status of flight [AA123](flight_number)?"
+    - "Is flight [BA456](flight_number) on time?"
+    - "Check the status for flight [DL789](flight_number)"
+    - "Has flight [UA321](flight_number) been delayed?"
+    - "Tell me the current status of flight [SW100](flight_number)"
+    - "Is flight [LH202](flight_number) arriving on schedule?"
 
-- intent: mood_unhappy
+# accommodations
+- intent: find_hotels
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - "Find hotels in [Paris](location) for [3 nights](duration) starting [July 10th](date)"
+    - "I need a hotel in [New York](location) near [Central Park](landmark)"
+    - "Show me available hotels in [Tokyo](location) with [free Wi-Fi](amenity)"
+    - "Looking for a 5-star hotel in [Rome](location)"
+    - "Find budget-friendly hotels in [Bangkok](location) for [2 weeks](duration)"
+    - "Search for hotels in [Berlin](location) with a [pool](amenity)"
+    - "I want to book a hotel in [Sydney](location) from [August 1st](start_date) to [August 5th](end_date)"
 
-- intent: bot_challenge
+# travel recommendations
+- intent: find_attractions
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - "What are the top attractions in [London](location)?"
+    - "Find sightseeing places in [Rome](location)"
+    - "Show me popular tourist spots in [New York](location)"
+    - "Recommend attractions to visit in [Tokyo](location)"
+    - "What can I do in [Barcelona](location)?"
+    - "List must-see places in [Istanbul](location)"
+    - "Suggest attractions around [Paris](location)"
+    - "What are the best museums in [Berlin](location)?"
+
+- intent: find_restaurants
+  examples: |
+    - "Find Italian restaurants in [New York](location)"
+    - "Show me the best sushi places in [Tokyo](location)"
+    - "Recommend vegetarian restaurants in [Berlin](location)"
+    - "Where can I eat seafood in [Sydney](location)?"
+    - "Find a good place for breakfast in [Chicago](location)"
+    - "Suggest romantic restaurants in [Paris](location)"
+    - "Looking for budget-friendly eateries in [Bangkok](location)"
+    - "Find restaurants near [Central Park](location)"
+
+- intent: find_shoppings
+  examples: |
+    - "Where can I shop for electronics in [San Francisco](location)?"
+    - "Find the best malls in [Dubai](location)"
+    - "Recommend shopping centers in [Seoul](location)"
+    - "Where to buy souvenirs in [Rome](location)?"
+    - "Show me fashion boutiques in [Milan](location)"
+    - "Find grocery stores in [Toronto](location)"
+    - "Looking for luxury brands in [London](location)"
+    - "Where can I find local markets in [Istanbul](location)?"
+
+- intent: ask_local_transport
+  examples: |
+    - "How do I get around in [Amsterdam](location)?"
+    - "What is the best way to travel within [New York](location)?"
+    - "Tell me about public transportation in [Tokyo](location)"
+    - "How can I reach [Eiffel Tower](location) from my hotel?"
+    - "What are the taxi rates in [Bangkok](location)?"
+    - "Is there a subway system in [Berlin](location)?"
+    - "How do I rent a bike in [Copenhagen](location)?"
+    - "What are the bus schedules in [Madrid](location)?"
+
+- intent: ask_weather
+  examples: |
+    - "What's the weather like in [London](location) today?"
+    - "Tell me the forecast for [Paris](location) this weekend"
+    - "Is it going to rain in [Rome](location) tomorrow?"
+    - "What's the temperature in [Tokyo](location) right now?"
+    - "Will it be sunny in [Sydney](location) this week?"
+    - "Check the weather for [New York](location) on [July 15th](date)"
+    - "How's the weather expected in [Bangkok](location) next week?"
+    - "What's the current weather condition in [Dubai](location)?"
+
+# others
+- intent: ask_travel_restrictions
+  examples: |
+    - "Are there any travel restrictions for [USA](country)?"
+    - "Do I need a visa to visit [Japan](country)?"
+    - "What are the COVID-19 restrictions in [Italy](country)?"
+    - "Are there quarantine rules for travelers entering [Australia](country)?"
+    - "What documents are required to travel to [Canada](country)?"
+    - "Are there any entry bans for [Russia](country)?"
+    - "What are the vaccination requirements for [Brazil](country)?"
+    - "Is travel allowed from [China](country) to [Germany](country)?"
+
+- intent: ask_currency_exchange
+  examples: |
+    - "What's the exchange rate from [USD](currency) to [EUR](currency)?"
+    - "How much is [100](amount) [GBP](currency) in [USD](currency)?"
+    - "Convert [250](amount) [JPY](currency) to [USD](currency)"
+    - "What's the current [EUR](currency) to [INR](currency) rate?"
+    - "How many [CAD](currency) can I get for [50](amount) [USD](currency)?"
+    - "What's the exchange rate today for [AUD](currency) to [GBP](currency)?"
+    - "Convert [500](amount) [CHF](currency) to [USD](currency)"
+    - "How much is [1000](amount) [CNY](currency) in [USD](currency)?"
+
+- intent: ask_travel_tips
+  examples: |
+    - "Any travel tips for visiting [Thailand](location)?"
+    - "What should I know before traveling to [Italy](location)?"
+    - "Give me some safety tips for [Brazil](location)"
+    - "How to save money while traveling in [Spain](location)?"
+    - "What are the cultural norms in [Japan](location)?"
+    - "Tips for traveling solo in [Germany](location)"
+    - "How to avoid scams in [Mexico](location)?"
+    - "What to pack for a trip to [Canada](location)?"
+    
+# - intent: provide_feedback
+#   examples: |
+#     - "I love the service you provided, thank you!"
+#     - "The information was helpful, thanks a lot."
+#     - "I'm not satisfied with the hotel recommendations."
+#     - "Great assistance, very useful!"
+#     - "The flight information was incorrect."
+#     - "Thanks for the quick response."
+#     - "I appreciate the help, but there's room for improvement."
+#     - "Your suggestions for restaurants were fantastic."
+#     - "The chatbot was slow to respond."
+#     - "Everything worked perfectly, thank you!"

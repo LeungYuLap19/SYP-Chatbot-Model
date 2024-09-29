@@ -1,13 +1,81 @@
 version: "3.1"
+# Rules are what the bot must follow in all situations.
+# There, you define how to activate and deactivate a form.
 
-rules:
+# rule: named sequence of event
+# steps: ordered list of conditions and actions
+rules: 
+# basics
+- rule: Greet
+  steps: 
+  - intent: greet
+  - action: utter_greet
 
-- rule: Say goodbye anytime the user says goodbye
+- rule: Goodbye
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
+    - intent: goodbye
+    - action: utter_goodbye
 
-- rule: Say 'I am a bot' anytime the user challenges
+- rule: Thank You
   steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+    - intent: thank_you
+    - action: utter_thank_you
+
+# flights
+- rule: Check Flights
+  steps:
+    - intent: check_flights
+    - action: action_check_flights # custom action
+
+- rule: Ask Flight Status
+  steps:
+    - intent: ask_flight_status
+    - action: action_ask_flight_status # custom action
+
+# accommondations
+- rule: Find Hotels
+  steps:
+    - intent: find_hotels
+    - action: action_find_hotels # custom action
+
+# travel recommendations
+- rule: Find Attractions
+  steps:
+    - intent: find_attractions
+    - action: action_find_attractions # custom action
+
+- rule: Find Restaurants
+  steps:
+    - intent: find_restaurants
+    - action: action_find_restaurants # custom action
+
+- rule: Find Shoppings
+  steps:
+    - intent: find_shoppings
+    - action: action_find_shoppings # custom action
+
+- rule: Ask Local Transport
+  steps:
+    - intent: ask_local_transport
+    - action: action_ask_local_transport # custom action
+
+- rule: Ask Weather
+  steps:
+    - intent: ask_weather
+    - action: action_ask_weather # custom action
+
+# others
+- rule: Ask Travel Restrictions
+  steps:
+    - intent: ask_travel_restrictions
+    - action: action_ask_travel_restrictions # custom action
+
+- rule: Ask Currency Exchange
+  steps:
+    - intent: ask_currency_exchange
+    - action: action_ask_currency_exchange # custom action
+
+- rule: Ask Travel Tips
+  steps:
+    - intent: ask_travel_tips
+    - action: action_ask_travel_tips # custom action

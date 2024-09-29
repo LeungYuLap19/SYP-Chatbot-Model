@@ -1,34 +1,129 @@
 version: "3.1"
-
+# define bot responses, intents, entities, slots, and actions
+# intents: List of user intents.
+# entities: List of entities to extract.
+# slots: Memory for storing information during conversation.
+# responses: Predefined bot responses.
+# actions: Custom actions or functions.
 intents:
+  # basics
   - greet
   - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+  - thank_you
+  # flights
+  - check_flights
+  - ask_flight_status
+  # accommondations
+  - find_hotels
+  # travel recommendations
+  - find_attractions
+  - find_restaurants
+  - find_shoppings
+  - ask_local_transport
+  - ask_weather
+  # others
+  - ask_travel_restrictions
+  - ask_currency_exchange
+  - ask_travel_tips
 
+entities:
+  - departure_city
+  - destination_city
+  - date
+  - flight_number
+  - location
+  - duration
+  - landmark
+  - amenity
+  - start_date
+  - end_date
+  - country
+  - currency
+  - amount
+
+slots:
+  departure_city:
+    type: text
+    influence_conversation: true
+
+  destination_city:
+    type: text
+    influence_conversation: true
+
+  date:
+    type: text
+    influence_conversation: true
+
+  flight_number:
+    type: text
+    influence_conversation: true
+
+  location:
+    type: text
+    influence_conversation: true
+
+  duration:
+    type: text
+    influence_conversation: true
+
+  landmark:
+    type: text
+    influence_conversation: false
+
+  amenity:
+    type: categorical
+    values: 
+      - free Wi-Fi
+      - pool
+      - breakfast
+      - parking
+      - gym
+    influence_conversation: false
+  
+  start_date:
+    type: text
+    influence_conversation: true
+
+  end_date:
+    type: text
+    influence_conversation: true
+
+  country:
+    type: text
+    influence_conversation: true
+  
+  currency:
+    type: text
+    influence_conversation: true
+
+  amount: 
+    type: float
+    influence_conversation: false
+
+# response actions or custom actions are defined here
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+    - text: "Hello! How can I assist you with your travel plans today?"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Goodbye! Have a great trip!"
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  utter_thank_you:
+    - text: "You're welcome! Happy to help."
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+actions:
+  - action_check_flights
+  - action_ask_flight_status
+  - action_find_hotels
+  - action_find_attractions
+  - action_find_restaurants
+  - action_find_shoppings
+  - action_ask_local_transport
+  - action_ask_weather
+  - action_ask_travel_restrictions
+  - action_ask_currency_exchange
+  - action_ask_travel_tips
+
+# session_config:
+#   session_expiration_time: 60
+#   carry_over_slots_to_new_session: true

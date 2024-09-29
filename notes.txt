@@ -1,0 +1,44 @@
+Intent list
+
+Basics
+1. greet
+2. goodbye
+3. thank_you
+
+Flights
+4. check_flights
+  - (departure_city)
+  - (destination_city)
+  - (date)
+5. ask_flight_status
+  - (flight_number)
+
+Accommondations
+6. find_hotels
+  - (location): general location. cities, counties or areas
+  - (landmark): notable places near user's desired location
+  - (amenity): specific services. free wifi, pool, etc.
+  - (duration)
+  - (start_date & end_date)
+
+Travel recommendations
+7. find_attractions
+  - (location)
+8. find_restaurants
+  - (location)
+9. find_shoppings
+  - (location)
+10. ask_local_transport
+  - (location)
+11. ask_weather
+  - (location)
+  - (date)
+
+Others
+12. ask_travel_restrictions
+  - (country)
+13. ask_currency_exchange
+  - (amount)
+  - (currency)
+14. ask_travel_tips
+  - (location)

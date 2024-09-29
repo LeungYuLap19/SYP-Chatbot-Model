@@ -1,30 +1,21 @@
 version: "3.1"
+# Stories are what the bot can follow in similar situations.
+# There, you define special cases and there are more concrete steps.
 
-stories:
+# example interactions to train model
+# story: named sequence of event
+# steps: intent and action flow to model conversation paths
+# stories:
+# - story: Greet and goodbye
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: goodbye
+#   - action: utter_goodbye
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+# - story: Inform and search
+#   steps:
+#   - intent: inform
+#   - entities:
+#     - cuisine: "Italian"
+#   - action: action_search_restaurants
