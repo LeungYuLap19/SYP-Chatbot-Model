@@ -1,8 +1,5 @@
 version: "3.1"
-# intent: high level goals of a user (e.g., greet, goodbye)
-# example: user utterances that express the intent
-# entities: [...](...) information to extract
-# for defining intents
+
 nlu:
 # basics
 - intent: greet
@@ -35,14 +32,14 @@ nlu:
     - "Thanks!"
     - "I appreciate it"
 
-# flights
+# Flights
 - intent: check_flights
   examples: |
-    - "I want to fly from [New York](departure_city) to [London](destination_city) on [June 5th](date)"
-    - "Find me flights departing [Paris](departure_city) to [Berlin](destination_city) next [Friday](date)"
-    - "Show available flights from [Los Angeles](departure_city) to [Tokyo](destination_city) on [August 20th](date)"
-    - "Looking for a flight from [Chicago](departure_city) to [Dubai](destination_city) leaving [July 15th](date)"
-    - "Search flights departing [Toronto](departure_city) heading to [Sydney](destination_city) on [September 10th](date)"
+    - "I want to fly from [New York](city:from) to [London](city:to) on [June 5th](date:from)"
+    - "Find me flights departing from [Paris](city:from) to [Berlin](city:to) next [Friday](date:from)"
+    - "Show available flights from [Los Angeles](city:from) to [Tokyo](city:to) on [August 20th](date:from)"
+    - "Looking for a flight from [Chicago](city:from) to [Dubai](city:to) leaving [July 15th](date:from)"
+    - "Search flights departing from [Toronto](city:from) heading to [Sydney](city:to) on [September 10th](date:from)"
 
 - intent: ask_flight_status
   examples: |
@@ -53,74 +50,72 @@ nlu:
     - "Tell me the current status of flight [SW100](flight_number)"
     - "Is flight [LH202](flight_number) arriving on schedule?"
 
-# accommodations
+# Accommodations
 - intent: find_hotels
   examples: |
-    - "Find hotels in [Paris](location) for [3 nights](duration) starting [July 10th](date)"
-    - "I need a hotel in [New York](location) near [Central Park](landmark)"
-    - "Show me available hotels in [Tokyo](location) with [free Wi-Fi](amenity)"
-    - "Looking for a 5-star hotel in [Rome](location)"
-    - "Find budget-friendly hotels in [Bangkok](location) for [2 weeks](duration)"
-    - "Search for hotels in [Berlin](location) with a [pool](amenity)"
-    - "I want to book a hotel in [Sydney](location) from [August 1st](start_date) to [August 5th](end_date)"
+    - "Find hotels in [Paris](city)"
+    - "Show me available hotels in [Tokyo](city) with [free Wi-Fi](amenity)"
+    - "Looking for a 5-star hotel in [Rome](city)"
+    - "Find budget-friendly hotels in [Bangkok](city) for [2 weeks](date)"
+    - "Search for hotels in [Berlin](city) with a [pool](amenity)"
+    - "I want to book a hotel in [Sydney](city) from [August 1st](date:from) to [August 5th](date:to)"
 
-# travel recommendations
+# Travel Recommendations
 - intent: find_attractions
   examples: |
-    - "What are the top attractions in [London](location)?"
-    - "Find sightseeing places in [Rome](location)"
-    - "Show me popular tourist spots in [New York](location)"
-    - "Recommend attractions to visit in [Tokyo](location)"
-    - "What can I do in [Barcelona](location)?"
-    - "List must-see places in [Istanbul](location)"
-    - "Suggest attractions around [Paris](location)"
-    - "What are the best museums in [Berlin](location)?"
+    - "What are the top attractions in [London](city)?"
+    - "Find sightseeing places in [Rome](city)"
+    - "Show me popular tourist spots in [New York](city)"
+    - "Recommend attractions to visit in [Tokyo](city)"
+    - "What can I do in [Barcelona](city)?"
+    - "List must-see places in [Istanbul](city)"
+    - "Suggest attractions around [Paris](city)"
+    - "What are the best museums in [Berlin](city)?"
 
 - intent: find_restaurants
   examples: |
-    - "Find Italian restaurants in [New York](location)"
-    - "Show me the best sushi places in [Tokyo](location)"
-    - "Recommend vegetarian restaurants in [Berlin](location)"
-    - "Where can I eat seafood in [Sydney](location)?"
-    - "Find a good place for breakfast in [Chicago](location)"
-    - "Suggest romantic restaurants in [Paris](location)"
-    - "Looking for budget-friendly eateries in [Bangkok](location)"
-    - "Find restaurants near [Central Park](location)"
+    - "Find Italian restaurants in [New York](city)"
+    - "Show me the best sushi places in [Tokyo](city)"
+    - "Recommend vegetarian restaurants in [Berlin](city)"
+    - "Where can I eat seafood in [Sydney](city)?"
+    - "Find a good place for breakfast in [Chicago](city)"
+    - "Suggest romantic restaurants in [Paris](city)"
+    - "Looking for budget-friendly eateries in [Bangkok](city)"
 
 - intent: find_shoppings
   examples: |
-    - "Where can I shop for electronics in [San Francisco](location)?"
-    - "Find the best malls in [Dubai](location)"
-    - "Recommend shopping centers in [Seoul](location)"
-    - "Where to buy souvenirs in [Rome](location)?"
-    - "Show me fashion boutiques in [Milan](location)"
-    - "Find grocery stores in [Toronto](location)"
-    - "Looking for luxury brands in [London](location)"
-    - "Where can I find local markets in [Istanbul](location)?"
+    - "Where can I shop for electronics in [San Francisco](city)?"
+    - "Find the best malls in [Dubai](city)"
+    - "Recommend shopping centers in [Seoul](city)"
+    - "Where to buy souvenirs in [Rome](city)?"
+    - "Show me fashion boutiques in [Milan](city)"
+    - "Find grocery stores in [Toronto](city)"
+    - "Looking for luxury brands in [London](city)"
+    - "Where can I find local markets in [Istanbul](city)?"
 
 - intent: ask_local_transport
   examples: |
-    - "How do I get around in [Amsterdam](location)?"
-    - "What is the best way to travel within [New York](location)?"
-    - "Tell me about public transportation in [Tokyo](location)"
-    - "How can I reach [Eiffel Tower](location) from my hotel?"
-    - "What are the taxi rates in [Bangkok](location)?"
-    - "Is there a subway system in [Berlin](location)?"
-    - "How do I rent a bike in [Copenhagen](location)?"
-    - "What are the bus schedules in [Madrid](location)?"
+    - "How do I get around in [Amsterdam](city)?"
+    - "What is the best way to travel within [New York](city)?"
+    - "Tell me about public transportation in [Tokyo](city)"
+    - "How can I reach [Eiffel Tower](amenity) from my hotel?"  # Assuming 'landmark' as 'amenity'
+    - "What are the taxi rates in [Bangkok](city)?"
+    - "Is there a subway system in [Berlin](city)?"
+    - "How do I rent a bike in [Copenhagen](city)?"
+    - "What are the bus schedules in [Madrid](city)?"
 
 - intent: ask_weather
   examples: |
-    - "What's the weather like in [London](location) today?"
-    - "Tell me the forecast for [Paris](location) this weekend"
-    - "Is it going to rain in [Rome](location) tomorrow?"
-    - "What's the temperature in [Tokyo](location) right now?"
-    - "Will it be sunny in [Sydney](location) this week?"
-    - "Check the weather for [New York](location) on [July 15th](date)"
-    - "How's the weather expected in [Bangkok](location) next week?"
-    - "What's the current weather condition in [Dubai](location)?"
+    - "What's the weather like in [London](city) today?"
+    - "Tell me the forecast for [Paris](city) this weekend"
+    - "Is it going to rain in [Rome](city) tomorrow?"
+    - "What's the temperature in [Tokyo](city) right now?"
+    - "Will it be sunny in [Sydney](city) this week?"
+    - "Check the weather for [New York](city) on [July 15th](date:from)"
+    - "How's the weather expected in [Bangkok](city) next week?"
+    - "What's the current weather condition in [Dubai](city)?"
 
-# others
+# Others
 - intent: ask_travel_restrictions
   examples: |
     - "Are there any travel restrictions for [USA](country)?"
@@ -134,35 +129,22 @@ nlu:
 
 - intent: ask_currency_exchange
   examples: |
-    - "What's the exchange rate from [USD](currency) to [EUR](currency)?"
-    - "How much is [100](amount) [GBP](currency) in [USD](currency)?"
-    - "Convert [250](amount) [JPY](currency) to [USD](currency)"
-    - "What's the current [EUR](currency) to [INR](currency) rate?"
-    - "How many [CAD](currency) can I get for [50](amount) [USD](currency)?"
-    - "What's the exchange rate today for [AUD](currency) to [GBP](currency)?"
-    - "Convert [500](amount) [CHF](currency) to [USD](currency)"
-    - "How much is [1000](amount) [CNY](currency) in [USD](currency)?"
+    - "What's the exchange rate from [USD](currency:source) to [EUR](currency:target)?"
+    - "How much is [100](amount) [GBP](currency:source) in [USD](currency:target)?"
+    - "Convert [250](amount) [JPY](currency:source) to [USD](currency:target)"
+    - "What's the current [EUR](currency:source) to [INR](currency:target) rate?"
+    - "How many [CAD](currency:source) can I get for [50](amount) [USD](currency:target)?"
+    - "What's the exchange rate today for [AUD](currency:source) to [GBP](currency:target)?"
+    - "Convert [500](amount) [CHF](currency:source) to [USD](currency:target)"
+    - "How much is [1000](amount) [CNY](currency:source) in [USD](currency:target)?"
 
 - intent: ask_travel_tips
   examples: |
-    - "Any travel tips for visiting [Thailand](location)?"
-    - "What should I know before traveling to [Italy](location)?"
-    - "Give me some safety tips for [Brazil](location)"
-    - "How to save money while traveling in [Spain](location)?"
-    - "What are the cultural norms in [Japan](location)?"
-    - "Tips for traveling solo in [Germany](location)"
-    - "How to avoid scams in [Mexico](location)?"
-    - "What to pack for a trip to [Canada](location)?"
-    
-# - intent: provide_feedback
-#   examples: |
-#     - "I love the service you provided, thank you!"
-#     - "The information was helpful, thanks a lot."
-#     - "I'm not satisfied with the hotel recommendations."
-#     - "Great assistance, very useful!"
-#     - "The flight information was incorrect."
-#     - "Thanks for the quick response."
-#     - "I appreciate the help, but there's room for improvement."
-#     - "Your suggestions for restaurants were fantastic."
-#     - "The chatbot was slow to respond."
-#     - "Everything worked perfectly, thank you!"
+    - "Any travel tips for visiting [Thailand](city)?"  # Mapped 'location' to 'city'
+    - "What should I know before traveling to [Italy](city)?"
+    - "Give me some safety tips for [Brazil](city)"
+    - "How to save money while traveling in [Spain](city)?"
+    - "What are the cultural norms in [Japan](city)?"
+    - "Tips for traveling solo in [Germany](city)"
+    - "How to avoid scams in [Mexico](city)?"
+    - "What to pack for a trip to [Canada](city)?"

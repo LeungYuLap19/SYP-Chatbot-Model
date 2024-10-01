@@ -1,11 +1,6 @@
 version: "3.1"
-# Stories are what the bot can follow in similar situations.
-# There, you define special cases and there are more concrete steps.
 
-# example interactions to train model
-# story: named sequence of event
-# steps: intent and action flow to model conversation paths
-# stories:
+stories:
 # - story: Greet and goodbye
 #   steps:
 #   - intent: greet

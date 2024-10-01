@@ -1,0 +1,68 @@
+Intent List
+
+Basics
+1. greet
+2. goodbye
+3. thank_you
+
+Flights
+4. check_flights
+  - (city:from) - text
+  - (city:to) - text
+  - (airport:from) - text
+  - (airport:to) - text
+  - (flight_type): oneway / return - categorical
+  - (date:from) - text
+  - (date:to) - text
+5. ask_flight_status
+  - (flight_number) - text
+
+Accommondations
+6. find_hotels
+  - (city) - text
+  - (date:from) - text
+  - (date:to) - text
+  - (amenity): wifi, gym, pool, etc. - categorical
+
+Travel recommendations
+7. find_attractions
+  - (city) - text
+8. find_restaurants
+  - (city) - text
+9. find_shoppings
+  - (city) - text
+10. ask_local_transport
+  - (city) - text
+11. ask_weather
+  - (city) - text
+  - (forecast) - boolean
+
+Others
+12. ask_travel_restrictions
+  - (country) - text
+13. ask_currency_exchange
+  - (amount) - float
+  - (currency:source) - text
+  - (currency:target) - text
+14. ask_travel_tips
+  - (city)
+
+actions:
+  # flights
+  - action_check_flights
+  - action_ask_flight_status
+
+  # accommondations
+  - action_find_hotels
+
+  # travel recommendations
+  - action_find_attractions
+  - action_find_restaurants
+  - action_find_shoppings
+  - action_ask_local_transport
+  - action_ask_weather
+
+  # others
+  - action_ask_travel_restrictions
+  - action_ask_currency_exchange
+  - action_ask_travel_tips
