@@ -66,3 +66,38 @@ actions:
   - action_ask_travel_restrictions
   - action_ask_currency_exchange
   - action_ask_travel_tips
+
+correct rules:
+
+Flights
+1. check_flights
+2. inform_departure
+3. inform_destination
+4. inform_departure_date
+# 5. inform_return_date
+
+4. check_flights_status
+5. inform_flight_number
+
+Accommodations
+1. find_hotels
+2. inform_resident_city
+3. inform_checkin_date
+4. inform_checkout_date
+5. inform_amenity
+
+Travel Recommendations
+1. find_attractions
+2. find_restaurants
+3. find_shoppings
+4. ask_weather
+5. inform_city
+
+Others
+1. ask_travel_restrictions
+2. inform_country
+3. ask_currency_exchange
+4. inform_source_currency
+5. inform_target_currency
+6. ask_travel_tips
+7. inform_city

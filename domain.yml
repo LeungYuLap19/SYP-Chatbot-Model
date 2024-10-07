@@ -7,43 +7,13 @@ intents:
   - thank_you
   # flights
   - check_flights
-  - ask_flight_status
-  # accommondations
-  - find_hotels
-  # travel recommendations
-  - find_attractions
-  - find_restaurants
-  - find_shoppings
-  - ask_local_transport
-  - ask_weather
-  # others
-  - ask_travel_restrictions
-  - ask_currency_exchange
-  - ask_travel_tips
+  - inform_departure
+  - inform_destination
+  - inform_departure_date
 
 entities:
-  - city
-    roles:
-    - from
-    - to
-  - airport
-    roles:
-    - from
-    - to
-  - flight_type
-  - date
-    roles:
-    - from
-    - to
-  - flight_number
-  - amenity
-  - forecast
-  - country
-  - amount
-  - currency
-    roles:
-    - source
-    - target
+  - GPE
+  - DATE
 
 # Slots are variables that store information extracted from user inputs (entities)
 slots:
@@ -53,149 +23,24 @@ slots:
     influence_conversation: true
     mappings:
       - type: from_entity
-        entity: city
-        role: from
+        entity: GPE
+        role: departure
 
   destination_city:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
-        entity: city
-        role: to
-
-  departure_airport:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: airport
-        role: from
-
-  destination_airport:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: airport
-        role: to
-
-  flight_type:
-    type: categorical
-    values:
-      - one_way
-      - return
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: flight_type
+        entity: GPE
+        role: destination
 
   departure_date:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
-        entity: date
-        role: from
-
-  return_date:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: date
-        role: to
-
-  flight_number:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: flight_number
-
-  # Accommodation
-  resident_city:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: city
-        role: to
-
-  check_in_date:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: date
-        role: from
-
-  check_out_date:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: date
-        role: to
-
-  amenity:
-    type: categorical
-    values:
-      - wifi
-      - gym
-      - pool
-      # add more
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: amenity
-
-  # Travel recommendations
-  travel_city:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: city
-        role: to
-
-  forecast:
-    type: boolean
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: forecast
-
-  # Others
-  country:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: country
-
-  amount:
-    type: float
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: amount
-
-  source_currency:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: currency
-        role: source
-
-  target_currency:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: currency
-        role: target
+        entity: DATE
+        role: departure
 
 # response actions or custom actions are defined here
 responses:
@@ -209,76 +54,24 @@ responses:
   utter_thank_you:
     - text: "You're welcome! Happy to help."
 
+  utter_ask_departure_city:
+    - text: "Please provide your departure city."
+
+  utter_ask_destination_city:
+    - text: "Please provide your destination."
+
+  utter_ask_departure_date:
+    - text: "Please provide your departure date."
+
+  utter_checking_flights:
+    - text: "Checking flights from {departure_city} to {destination_city} on {departure_date}"
+
 forms:
   check_flights_form:
     required_slots:
       - departure_city
       - destination_city
-      - departure_airport
-      - destination_airport
-      - flight_type
       - departure_date
-      - return_date
-
-  ask_flight_status_form:
-    required_slots:
-      - flight_number
-
-  find_hotels_form:
-    required_slots:
-      - resident_city
-      - check_in_date
-      - check_out_date
-      - amenity
-      
-  travel_recommendations_form:
-    required_slots:
-      - travel_city
-      
-  ask_weather_form:
-    required_slots:
-      - travel_city
-      - forecast
-      
-  ask_restrictions_tips_form:
-    required_slots:
-      - country
-      
-  ask_currency_exchange_form:
-    required_slots:
-      - amount
-      - source_currency
-      - target_currency
-      
-  
-actions:
-  # flights
-  - action_check_flights
-  - action_ask_flight_status
-
-  # accommondations
-  - action_find_hotels
-
-  # travel recommendations
-  - action_find_attractions
-  - action_find_restaurants
-  - action_find_shoppings
-  - action_ask_local_transport
-  - action_ask_weather
-
-  # others
-  - action_ask_travel_restrictions
-  - action_ask_currency_exchange
-  - action_ask_travel_tips
-
-  # forms
-  - validate_check_flights_form
-  - validate_ask_flight_status_form
-  - validate_find_hotels_form
-  - validate_travel_recommendations_form
-  - validate_ask_weather_form
-  - validate_ask_restrictions_tips_form
-  - validate_ask_currency_exchange_form
 
 session_config:
   session_expiration_time: 60

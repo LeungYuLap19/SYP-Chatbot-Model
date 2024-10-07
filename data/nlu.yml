@@ -1,150 +1,105 @@
 version: "3.1"
 
 nlu:
-# basics
-- intent: greet
-  examples: |
-    - "Hello"
-    - "Hi there"
-    - "Hey!"
-    - "Good morning"
-    - "Good evening"
-    - "Hi Chatbot"
-    - "Hello there"
+  # Basic intents
+  - intent: greet
+    examples: |
+      - "Hello"
+      - "Hi there"
+      - "Hey!"
+      - "Good morning"
+      - "Good evening"
+      - "Hi Chatbot"
+      - "Hello there"
 
-- intent: goodbye
-  examples: |
-    - "Goodbye"
-    - "See you later"
-    - "Bye!"
-    - "Talk to you soon"
-    - "Have a nice day"
-    - "Farewell"
-    - "Catch you later"
+  - intent: goodbye
+    examples: |
+      - "Goodbye"
+      - "See you later"
+      - "Bye!"
+      - "Talk to you soon"
+      - "Have a nice day"
+      - "Farewell"
+      - "Catch you later"
 
-- intent: thank_you
-  examples: |
-    - "Thank you"
-    - "Thanks a lot"
-    - "Much appreciated"
-    - "Thanks for your help"
-    - "Thank you very much"
-    - "Thanks!"
-    - "I appreciate it"
+  - intent: thank_you
+    examples: |
+      - "Thank you"
+      - "Thanks a lot"
+      - "Much appreciated"
+      - "Thanks for your help"
+      - "Thank you very much"
+      - "Thanks!"
+      - "I appreciate it"
 
-# Flights
-- intent: check_flights
-  examples: |
-    - "I want to fly from [New York](city:from) to [London](city:to) on [June 5th](date:from)"
-    - "Find me flights departing from [Paris](city:from) to [Berlin](city:to) next [Friday](date:from)"
-    - "Show available flights from [Los Angeles](city:from) to [Tokyo](city:to) on [August 20th](date:from)"
-    - "Looking for a flight from [Chicago](city:from) to [Dubai](city:to) leaving [July 15th](date:from)"
-    - "Search flights departing from [Toronto](city:from) heading to [Sydney](city:to) on [September 10th](date:from)"
+  # Flights-related intents
+  - intent: check_flights
+    examples: |
+      - "Find flights from [New York]{"entity": "GPE", "role": "departure"} to [Tokyo]{"entity": "GPE", "role": "destination"} on [October 15]{"entity": "DATE", "role": "departure"}"
+      - "I need to fly from [Paris]{"entity": "GPE", "role": "departure"} to [Berlin]{"entity": "GPE", "role": "destination"} on [November 2]{"entity": "DATE", "role": "departure"}"
+      - "Are there flights from [Los Angeles]{"entity": "GPE", "role": "departure"} to [Sydney]{"entity": "GPE", "role": "destination"} on [December 20]{"entity": "DATE", "role": "departure"}?"
+      - "Check flights from [London]{"entity": "GPE", "role": "departure"} to [Madrid]{"entity": "GPE", "role": "destination"} for [October 25]{"entity": "DATE", "role": "departure"}"
+      - "Show me flights from [Dubai]{"entity": "GPE", "role": "departure"} to [Singapore]{"entity": "GPE", "role": "destination"} on [October 10]{"entity": "DATE", "role": "departure"}"
+      
+      - "Find flights from [New York]{"entity": "GPE", "role": "departure"} to [Tokyo]{"entity": "GPE", "role": "destination"}"
+      - "Show me flights from [Paris]{"entity": "GPE", "role": "departure"} to [Berlin]{"entity": "GPE", "role": "destination"}"
+      - "What flights are there from [Los Angeles]{"entity": "GPE", "role": "departure"} to [Sydney]{"entity": "GPE", "role": "destination"}?"
+      - "Check flights from [London]{"entity": "GPE", "role": "departure"} to [Madrid]{"entity": "GPE", "role": "destination"}"
+      - "I want to see flights from [Dubai]{"entity": "GPE", "role": "departure"} to [Singapore]{"entity": "GPE", "role": "destination"}"
+      
+      - "Check flights to [Tokyo]{"entity": "GPE", "role": "destination"} on [October 15]{"entity": "DATE", "role": "departure"}"
+      - "I need a flight to [Berlin]{"entity": "GPE", "role": "destination"} on [November 2]{"entity": "DATE", "role": "departure"}"
+      - "What flights are available to [Sydney]{"entity": "GPE", "role": "destination"} on [December 20]{"entity": "DATE", "role": "departure"}?"
+      - "Show me flights to [Madrid]{"entity": "GPE", "role": "destination"} for [October 25]{"entity": "DATE", "role": "departure"}"
+      - "Find flights to [Singapore]{"entity": "GPE", "role": "destination"} on [October 10]{"entity": "DATE", "role": "departure"}"
+      
+      - "Find flights to [Tokyo]{"entity": "GPE", "role": "destination"}"
+      - "I need a flight to [Berlin]{"entity": "GPE", "role": "destination"}"
+      - "Check flights to [Sydney]{"entity": "GPE", "role": "destination"}"
+      - "Show me flights to [Madrid]{"entity": "GPE", "role": "destination"}"
+      - "What flights are available to [Singapore]{"entity": "GPE", "role": "destination"}?"
+      
+      - "I want to check flights"
+      - "Can you find some flights for me?"
+      - "Show me available flights"
+      - "I need to see flight options"
+      - "What flights are there?"
 
-- intent: ask_flight_status
-  examples: |
-    - "What's the status of flight [AA123](flight_number)?"
-    - "Is flight [BA456](flight_number) on time?"
-    - "Check the status for flight [DL789](flight_number)"
-    - "Has flight [UA321](flight_number) been delayed?"
-    - "Tell me the current status of flight [SW100](flight_number)"
-    - "Is flight [LH202](flight_number) arriving on schedule?"
+  - intent: inform_departure
+    examples: |
+      - "I'm flying from [New York]{"entity": "GPE", "role": "departure"}"
+      - "Departure will be from [London]{"entity": "GPE", "role": "departure"}"
+      - "I'll leave from [Paris]{"entity": "GPE", "role": "departure"}"
+      - "The flight starts in [Los Angeles]{"entity": "GPE", "role": "departure"}"
+      - "My trip will begin in [Dubai]{"entity": "GPE", "role": "departure"}"
+      - "[New York]{"entity": "GPE", "role": "departure"}"
+      - "[London]{"entity": "GPE", "role": "departure"}"
+      - "[Paris]{"entity": "GPE", "role": "departure"}"
+      - "[Los Angeles]{"entity": "GPE", "role": "departure"}"
+      - "[Dubai]{"entity": "GPE", "role": "departure"}"
 
-# Accommodations
-- intent: find_hotels
-  examples: |
-    - "Find hotels in [Paris](city)"
-    - "Show me available hotels in [Tokyo](city) with [free Wi-Fi](amenity)"
-    - "Looking for a 5-star hotel in [Rome](city)"
-    - "Find budget-friendly hotels in [Bangkok](city) for [2 weeks](date)"
-    - "Search for hotels in [Berlin](city) with a [pool](amenity)"
-    - "I want to book a hotel in [Sydney](city) from [August 1st](date:from) to [August 5th](date:to)"
+  - intent: inform_destination
+    examples: |
+      - "I'm flying to [Tokyo]{"entity": "GPE", "role": "destination"}"
+      - "Destination is [Berlin]{"entity": "GPE", "role": "destination"}"
+      - "I'll land in [Sydney]{"entity": "GPE", "role": "destination"}"
+      - "I need a flight to [Madrid]{"entity": "GPE", "role": "destination"}"
+      - "My trip ends in [Rome]{"entity": "GPE", "role": "destination"}"
+      - "[Tokyo]{"entity": "GPE", "role": "destination"}"
+      - "[Berlin]{"entity": "GPE", "role": "destination"}"
+      - "[Sydney]{"entity": "GPE", "role": "destination"}"
+      - "[Madrid]{"entity": "GPE", "role": "destination"}"
+      - "[Rome]{"entity": "GPE", "role": "destination"}"
 
-# Travel Recommendations
-- intent: find_attractions
-  examples: |
-    - "What are the top attractions in [London](city)?"
-    - "Find sightseeing places in [Rome](city)"
-    - "Show me popular tourist spots in [New York](city)"
-    - "Recommend attractions to visit in [Tokyo](city)"
-    - "What can I do in [Barcelona](city)?"
-    - "List must-see places in [Istanbul](city)"
-    - "Suggest attractions around [Paris](city)"
-    - "What are the best museums in [Berlin](city)?"
-
-- intent: find_restaurants
-  examples: |
-    - "Find Italian restaurants in [New York](city)"
-    - "Show me the best sushi places in [Tokyo](city)"
-    - "Recommend vegetarian restaurants in [Berlin](city)"
-    - "Where can I eat seafood in [Sydney](city)?"
-    - "Find a good place for breakfast in [Chicago](city)"
-    - "Suggest romantic restaurants in [Paris](city)"
-    - "Looking for budget-friendly eateries in [Bangkok](city)"
-
-- intent: find_shoppings
-  examples: |
-    - "Where can I shop for electronics in [San Francisco](city)?"
-    - "Find the best malls in [Dubai](city)"
-    - "Recommend shopping centers in [Seoul](city)"
-    - "Where to buy souvenirs in [Rome](city)?"
-    - "Show me fashion boutiques in [Milan](city)"
-    - "Find grocery stores in [Toronto](city)"
-    - "Looking for luxury brands in [London](city)"
-    - "Where can I find local markets in [Istanbul](city)?"
-
-- intent: ask_local_transport
-  examples: |
-    - "How do I get around in [Amsterdam](city)?"
-    - "What is the best way to travel within [New York](city)?"
-    - "Tell me about public transportation in [Tokyo](city)"
-    - "How can I reach [Eiffel Tower](amenity) from my hotel?"  # Assuming 'landmark' as 'amenity'
-    - "What are the taxi rates in [Bangkok](city)?"
-    - "Is there a subway system in [Berlin](city)?"
-    - "How do I rent a bike in [Copenhagen](city)?"
-    - "What are the bus schedules in [Madrid](city)?"
-
-- intent: ask_weather
-  examples: |
-    - "What's the weather like in [London](city) today?"
-    - "Tell me the forecast for [Paris](city) this weekend"
-    - "Is it going to rain in [Rome](city) tomorrow?"
-    - "What's the temperature in [Tokyo](city) right now?"
-    - "Will it be sunny in [Sydney](city) this week?"
-    - "Check the weather for [New York](city) on [July 15th](date:from)"
-    - "How's the weather expected in [Bangkok](city) next week?"
-    - "What's the current weather condition in [Dubai](city)?"
-
-# Others
-- intent: ask_travel_restrictions
-  examples: |
-    - "Are there any travel restrictions for [USA](country)?"
-    - "Do I need a visa to visit [Japan](country)?"
-    - "What are the COVID-19 restrictions in [Italy](country)?"
-    - "Are there quarantine rules for travelers entering [Australia](country)?"
-    - "What documents are required to travel to [Canada](country)?"
-    - "Are there any entry bans for [Russia](country)?"
-    - "What are the vaccination requirements for [Brazil](country)?"
-    - "Is travel allowed from [China](country) to [Germany](country)?"
-
-- intent: ask_currency_exchange
-  examples: |
-    - "What's the exchange rate from [USD](currency:source) to [EUR](currency:target)?"
-    - "How much is [100](amount) [GBP](currency:source) in [USD](currency:target)?"
-    - "Convert [250](amount) [JPY](currency:source) to [USD](currency:target)"
-    - "What's the current [EUR](currency:source) to [INR](currency:target) rate?"
-    - "How many [CAD](currency:source) can I get for [50](amount) [USD](currency:target)?"
-    - "What's the exchange rate today for [AUD](currency:source) to [GBP](currency:target)?"
-    - "Convert [500](amount) [CHF](currency:source) to [USD](currency:target)"
-    - "How much is [1000](amount) [CNY](currency:source) in [USD](currency:target)?"
-
-- intent: ask_travel_tips
-  examples: |
-    - "Any travel tips for visiting [Thailand](city)?"  # Mapped 'location' to 'city'
-    - "What should I know before traveling to [Italy](city)?"
-    - "Give me some safety tips for [Brazil](city)"
-    - "How to save money while traveling in [Spain](city)?"
-    - "What are the cultural norms in [Japan](city)?"
-    - "Tips for traveling solo in [Germany](city)"
-    - "How to avoid scams in [Mexico](city)?"
-    - "What to pack for a trip to [Canada](city)?"
+  - intent: inform_departure_date
+    examples: |
+      - "The flight is on [October 15]{"entity": "DATE", "role": "departure"}"
+      - "I'll be leaving on [November 2]{"entity": "DATE", "role": "departure"}"
+      - "Departure DATE is [December 20]{"entity": "DATE", "role": "departure"}"
+      - "I'm flying on [October 25]{"entity": "DATE", "role": "departure"}"
+      - "The trip starts on [July 10]{"entity": "DATE", "role": "departure"}"
+      - "[October 15]{"entity": "DATE", "role": "departure"}"
+      - "[November 2]{"entity": "DATE", "role": "departure"}"
+      - "[December 20]{"entity": "DATE", "role": "departure"}"
+      - "[October 25]{"entity": "DATE", "role": "departure"}"
+      - "[July 10]{"entity": "DATE", "role": "departure"}"
