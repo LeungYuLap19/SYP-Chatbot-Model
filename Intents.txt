@@ -74,7 +74,7 @@ Flights
 2. inform_departure
 3. inform_destination
 4. inform_departure_date
-# 5. inform_return_date
+5. inform_return_date
 
 4. check_flights_status
 5. inform_flight_number

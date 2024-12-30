@@ -1,35 +1,27 @@
 version: "3.1"
 
 rules: 
-# basics
-- rule: Greet
-  steps: 
-  - intent: greet
-  - action: utter_greet
-
-- rule: Goodbye
+- rule: Activate travel form
   steps:
-    - intent: goodbye
-    - action: utter_goodbye
+  - intent: tell_travel
+  - action: travel_form
+  - active_loop: travel_form
 
-- rule: Thank You
-  steps:
-    - intent: thank_you
-    - action: utter_thank_you
-
-# flights
-- rule: Activate Check Flights Form
-  steps:
-    - intent: check_flights
-    - action: check_flights_form
-    - active_loop: check_flights_form
-
-- rule: Submit Check Flights Form
+- rule: Submit travel form
   condition:
-    - active_loop: check_flights_form
+  - active_loop: travel_form
   steps:
-    - action: check_flights_form
-    - active_loop: null
-    - slot_was_set:
-      - requested_slot: null
-    - action: utter_checking_flights
+  - action: travel_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_travel
+
+- rule: Reset travel form
+  steps:
+  - intent: reset_form
+  - action: travel_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_form_reset

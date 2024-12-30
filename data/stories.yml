@@ -1,16 +1,17 @@
 version: "3.1"
 
 stories:
-# - story: Greet and goodbye
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: goodbye
-#   - action: utter_goodbye
-
-# - story: Inform and search
-#   steps:
-#   - intent: inform
-#   - entities:
-#     - cuisine: "Italian"
-#   - action: action_search_restaurants
+  - story: activate travel form
+    steps:
+    - intent: tell_travel
+    - action: travel_form
+    - active_loop: travel_form
+  
+  - story: reset travel form
+    steps:
+    - intent: reset_form
+    - action: travel_form
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
+    - action: utter_form_reset

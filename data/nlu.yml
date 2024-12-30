@@ -1,105 +1,176 @@
 version: "3.1"
 
 nlu:
-  # Basic intents
-  - intent: greet
-    examples: |
-      - "Hello"
-      - "Hi there"
-      - "Hey!"
-      - "Good morning"
-      - "Good evening"
-      - "Hi Chatbot"
-      - "Hello there"
+- lookup: country
+  examples: |
+    - | Lookup/list-of-countries.txt
 
-  - intent: goodbye
-    examples: |
-      - "Goodbye"
-      - "See you later"
-      - "Bye!"
-      - "Talk to you soon"
-      - "Have a nice day"
-      - "Farewell"
-      - "Catch you later"
+- intent: reset_form
+  examples: |
+    - I want to search for another flight
+    - I want to book another flight
+    - I want to find another flight
+    - I want to search for a different flight
+    - I want to book a different flight
+  
+- intent: tell_travel
+  examples: |
+    - I want to travel
+    - I need to book a flight
+    - I'm planning a trip
+    - [India]{"entity": "country", "role": "departure"} to [Spain]{"entity": "country", "role": "destination"}
+    - Traveling from [Finland]{"entity": "country", "role": "departure"} to [Argentina]{"entity": "country", "role": "destination"}
+    - Departing [Iran]{"entity": "country", "role": "departure"} and arriving in [Canada]{"entity": "country", "role": "destination"}
+    - Leaving [Denmark]{"entity": "country", "role": "departure"} for [Mexico]{"entity": "country", "role": "destination"}
+    - Flights to [Qatar]{"entity": "country", "role": "destination"}
+    - Travel to [Australia]{"entity": "country", "role": "destination"}
+    - I want to fly from [Netherlands]{"entity": "country", "role": "departure"} to [Greece]{"entity": "country", "role": "destination"}
+    - Departing [France]{"entity": "country", "role": "departure"} and flying to [Japan]{"entity": "country", "role": "destination"}
+    - I need a flight from [Kenya]{"entity": "country", "role": "departure"} to [Turkey]{"entity": "country", "role": "destination"}
+    - Looking for flights from [Indonesia]{"entity": "country", "role": "departure"} to [Norway]{"entity": "country", "role": "destination"}
+    - Traveling from [South Africa]{"entity": "country", "role": "departure"} to [China]{"entity": "country", "role": "destination"}
+    - Departing [Morocco]{"entity": "country", "role": "departure"} to fly to [Sweden]{"entity": "country", "role": "destination"}
+    - Leaving [New Zealand]{"entity": "country", "role": "departure"} for [Egypt]{"entity": "country", "role": "destination"}
+    - Traveling from [Vietnam]{"entity": "country", "role": "departure"} to [Brazil]{"entity": "country", "role": "destination"}
+    - Flights to [Italy]{"entity": "country", "role": "destination"} from [South Korea]{"entity": "country", "role": "departure"}
+    - Departing [Thailand]{"entity": "country", "role": "departure"} and arriving at [Russia]{"entity": "country", "role": "destination"}
+    - I need to fly from [United States]{"entity": "country", "role": "departure"} to [Saudi Arabia]{"entity": "country", "role": "destination"}
+    - Leaving [Bangladesh]{"entity": "country", "role": "departure"} to go to [Sri Lanka]{"entity": "country", "role": "destination"}
+    - Departing from [Austria]{"entity": "country", "role": "departure"} and flying to [Nigeria]{"entity": "country", "role": "destination"}
+    - Flights from [Chile]{"entity": "country", "role": "departure"} to [United Kingdom]{"entity": "country", "role": "destination"}
+    - I need to book a flight from [Ireland]{"entity": "country", "role": "departure"} to [South Africa]{"entity": "country", "role": "destination"}
+    - Can you find flights from [Vietnam]{"entity": "country", "role": "departure"} to [Finland]{"entity": "country", "role": "destination"}?
+    - I'm traveling from [Colombia]{"entity": "country", "role": "departure"} to [Switzerland]{"entity": "country", "role": "destination"} next week.
+    - I want to fly from [Ghana]{"entity": "country", "role": "departure"} to [Jordan]{"entity": "country", "role": "destination"}
+    - Need a flight from [Peru]{"entity": "country", "role": "departure"} to [Turkey]{"entity": "country", "role": "destination"}
+    - Flights from [Croatia]{"entity": "country", "role": "departure"} to [Estonia]{"entity": "country", "role": "destination"} please.
+    - Departing [Malawi]{"entity": "country", "role": "departure"} and heading to [Philippines]{"entity": "country", "role": "destination"}
+    - Can you check flights from [Ecuador]{"entity": "country", "role": "departure"} to [Romania]{"entity": "country", "role": "destination"}?
+    - I'm planning a trip from [Zambia]{"entity": "country", "role": "departure"} to [Norway]{"entity": "country", "role": "destination"} next month.
+    - Find a flight departing from [Tajikistan]{"entity": "country", "role": "departure"} to [Malaysia]{"entity": "country", "role": "destination"}
+    - Heading out from [Portugal]{"entity": "country", "role": "departure"} to chill in [Brazil]{"entity": "country", "role": "destination"}
+    - Jetting off from [Sweden]{"entity": "country", "role": "departure"} to explore [Thailand]{"entity": "country", "role": "destination"}
+    - Taking a flight from [Mexico]{"entity": "country", "role": "departure"} to [China]{"entity": "country", "role": "destination"}
+    - Planning to travel from [Egypt]{"entity": "country", "role": "departure"} to [Germany]{"entity": "country", "role": "destination"}
+    - Departing [Norway]{"entity": "country", "role": "departure"} for a trip to [India]{"entity": "country", "role": "destination"}
+    - Off to [Australia]{"entity": "country", "role": "destination"} from [Belgium]{"entity": "country", "role": "departure"}
+    - Heading from [Ireland]{"entity": "country", "role": "departure"} to [Chile]{"entity": "country", "role": "destination"}
+    - Leaving [Argentina]{"entity": "country", "role": "departure"} for [South Korea]{"entity": "country", "role": "destination"}
+    - Flying from [New Zealand]{"entity": "country", "role": "departure"} to [Morocco]{"entity": "country", "role": "destination"}
+    - Need a flight from [Kenya]{"entity": "country", "role": "departure"} to [Poland]{"entity": "country", "role": "destination"}
+    - Flights from [Spain]{"entity": "country", "role": "departure"} to [Germany]{"entity": "country", "role": "destination"}
+    - Trip from [France]{"entity": "country", "role": "departure"} to [Italy]{"entity": "country", "role": "destination"}
+    - Travel [USA]{"entity": "country", "role": "departure"} to [Canada]{"entity": "country", "role": "destination"}
+    - From [Brazil]{"entity": "country", "role": "departure"} to [Argentina]{"entity": "country", "role": "destination"}
+    - Fly [Japan]{"entity": "country", "role": "departure"} to [South Korea]{"entity": "country", "role": "destination"}
+    - Route [Russia]{"entity": "country", "role": "departure"} to [China]{"entity": "country", "role": "destination"}
+    - [Australia]{"entity": "country", "role": "departure"} to [New Zealand]{"entity": "country", "role": "destination"}
+    - [India]{"entity": "country", "role": "departure"} to [Nepal]{"entity": "country", "role": "destination"}
+    - [Egypt]{"entity": "country", "role": "departure"} to [Greece]{"entity": "country", "role": "destination"}
+    - [Mexico]{"entity": "country", "role": "departure"} to [Cuba]{"entity": "country", "role": "destination"}
+    
+- intent: tell_departure
+  examples: |
+    - departing from [Algeria]{"entity": "country", "role": "departure"}
+    - leaving [Pakistan]{"entity": "country", "role": "departure"}
+    - I will depart from [Belgium]{"entity": "country", "role": "departure"} tomorrow
+    - my departure country is [Malaysia]{"entity": "country", "role": "departure"}
+    - departing from [Tanzania]{"entity": "country", "role": "departure"}
+    - leaving [Ukraine]{"entity": "country", "role": "departure"}
+    - I will depart [Philippines]{"entity": "country", "role": "departure"} next week
+    - Departing from [Lebanon]{"entity": "country", "role": "departure"}
+    - Flights departing [Singapore]{"entity": "country", "role": "departure"}
+    - I want to leave [Croatia]{"entity": "country", "role": "departure"}
+    - Departing [Romania]{"entity": "country", "role": "departure"} this weekend
+    - Leaving [Ethiopia]{"entity": "country", "role": "departure"} for an adventure
+    - Departing from [Portugal]{"entity": "country", "role": "departure"}
+    - Leaving [Jordan]{"entity": "country", "role": "departure"} next Monday
+    - My departure is from [Serbia]{"entity": "country", "role": "departure"}
+    - Departing from [Luxembourg]{"entity": "country", "role": "departure"}
+    - Flights leaving [Uzbekistan]{"entity": "country", "role": "departure"}
+    - Departing from [Poland]{"entity": "country", "role": "departure"} tomorrow
+    - Leaving [Kazakhstan]{"entity": "country", "role": "departure"} for an international trip
+    - Departing from [Iceland]{"entity": "country", "role": "departure"} next Friday
+    - I will be leaving [Nepal]{"entity": "country", "role": "departure"} soon.
+    - My departure is from [Angola]{"entity": "country", "role": "departure"} tomorrow.
+    - I'm flying out from [Czechia]{"entity": "country", "role": "departure"} next Friday.
+    - I will depart from [Hungary]{"entity": "country", "role": "departure"} this weekend.
+    - I'll be leaving from [Thailand]{"entity": "country", "role": "departure"} at noon.
+    - Flights departing from [Uzbekistan]{"entity": "country", "role": "departure"} this evening.
+    - I'm heading out from [Fiji]{"entity": "country", "role": "departure"} on Monday.
+    - Leaving [El Salvador]{"entity": "country", "role": "departure"} in the morning.
+    - My departure location is [Honduras]{"entity": "country", "role": "departure"}.
+    - I'm departing from [Nicaragua]{"entity": "country", "role": "departure"} soon.
+    - Heading out from [Spain]{"entity": "country", "role": "departure"}
+    - Leaving [Chile]{"entity": "country", "role": "departure"} soon
+    - Departing from [Nigeria]{"entity": "country", "role": "departure"} next week
+    - Flights leaving [Argentina]{"entity": "country", "role": "departure"}
+    - I'm off from [Greece]{"entity": "country", "role": "departure"}
+    - Taking off from [Switzerland]{"entity": "country", "role": "departure"}
+    - Departing [Vietnam]{"entity": "country", "role": "departure"} for my journey
+    - Leaving from [Cuba]{"entity": "country", "role": "departure"}
+    - Flights departing [Israel]{"entity": "country", "role": "departure"}
+    - Starting my trip from [South Africa]{"entity": "country", "role": "departure"}
+    - Departing [Spain]{"entity": "country", "role": "departure"}
+    - Leaving [France]{"entity": "country", "role": "departure"}
+    - Departure from [USA]{"entity": "country", "role": "departure"}
+    - From [Brazil]{"entity": "country", "role": "departure"}
+    - Leaving [Japan]{"entity": "country", "role": "departure"}
+    - [Russia]{"entity": "country", "role": "departure"} flight
+    - Leaving [Australia]{"entity": "country", "role": "departure"}
+    - From [India]{"entity": "country", "role": "departure"}
+    - [Egypt]{"entity": "country", "role": "departure"}
+    - Departing [Mexico]{"entity": "country", "role": "departure"}
 
-  - intent: thank_you
-    examples: |
-      - "Thank you"
-      - "Thanks a lot"
-      - "Much appreciated"
-      - "Thanks for your help"
-      - "Thank you very much"
-      - "Thanks!"
-      - "I appreciate it"
-
-  # Flights-related intents
-  - intent: check_flights
-    examples: |
-      - "Find flights from [New York]{"entity": "GPE", "role": "departure"} to [Tokyo]{"entity": "GPE", "role": "destination"} on [October 15]{"entity": "DATE", "role": "departure"}"
-      - "I need to fly from [Paris]{"entity": "GPE", "role": "departure"} to [Berlin]{"entity": "GPE", "role": "destination"} on [November 2]{"entity": "DATE", "role": "departure"}"
-      - "Are there flights from [Los Angeles]{"entity": "GPE", "role": "departure"} to [Sydney]{"entity": "GPE", "role": "destination"} on [December 20]{"entity": "DATE", "role": "departure"}?"
-      - "Check flights from [London]{"entity": "GPE", "role": "departure"} to [Madrid]{"entity": "GPE", "role": "destination"} for [October 25]{"entity": "DATE", "role": "departure"}"
-      - "Show me flights from [Dubai]{"entity": "GPE", "role": "departure"} to [Singapore]{"entity": "GPE", "role": "destination"} on [October 10]{"entity": "DATE", "role": "departure"}"
-      
-      - "Find flights from [New York]{"entity": "GPE", "role": "departure"} to [Tokyo]{"entity": "GPE", "role": "destination"}"
-      - "Show me flights from [Paris]{"entity": "GPE", "role": "departure"} to [Berlin]{"entity": "GPE", "role": "destination"}"
-      - "What flights are there from [Los Angeles]{"entity": "GPE", "role": "departure"} to [Sydney]{"entity": "GPE", "role": "destination"}?"
-      - "Check flights from [London]{"entity": "GPE", "role": "departure"} to [Madrid]{"entity": "GPE", "role": "destination"}"
-      - "I want to see flights from [Dubai]{"entity": "GPE", "role": "departure"} to [Singapore]{"entity": "GPE", "role": "destination"}"
-      
-      - "Check flights to [Tokyo]{"entity": "GPE", "role": "destination"} on [October 15]{"entity": "DATE", "role": "departure"}"
-      - "I need a flight to [Berlin]{"entity": "GPE", "role": "destination"} on [November 2]{"entity": "DATE", "role": "departure"}"
-      - "What flights are available to [Sydney]{"entity": "GPE", "role": "destination"} on [December 20]{"entity": "DATE", "role": "departure"}?"
-      - "Show me flights to [Madrid]{"entity": "GPE", "role": "destination"} for [October 25]{"entity": "DATE", "role": "departure"}"
-      - "Find flights to [Singapore]{"entity": "GPE", "role": "destination"} on [October 10]{"entity": "DATE", "role": "departure"}"
-      
-      - "Find flights to [Tokyo]{"entity": "GPE", "role": "destination"}"
-      - "I need a flight to [Berlin]{"entity": "GPE", "role": "destination"}"
-      - "Check flights to [Sydney]{"entity": "GPE", "role": "destination"}"
-      - "Show me flights to [Madrid]{"entity": "GPE", "role": "destination"}"
-      - "What flights are available to [Singapore]{"entity": "GPE", "role": "destination"}?"
-      
-      - "I want to check flights"
-      - "Can you find some flights for me?"
-      - "Show me available flights"
-      - "I need to see flight options"
-      - "What flights are there?"
-
-  - intent: inform_departure
-    examples: |
-      - "I'm flying from [New York]{"entity": "GPE", "role": "departure"}"
-      - "Departure will be from [London]{"entity": "GPE", "role": "departure"}"
-      - "I'll leave from [Paris]{"entity": "GPE", "role": "departure"}"
-      - "The flight starts in [Los Angeles]{"entity": "GPE", "role": "departure"}"
-      - "My trip will begin in [Dubai]{"entity": "GPE", "role": "departure"}"
-      - "[New York]{"entity": "GPE", "role": "departure"}"
-      - "[London]{"entity": "GPE", "role": "departure"}"
-      - "[Paris]{"entity": "GPE", "role": "departure"}"
-      - "[Los Angeles]{"entity": "GPE", "role": "departure"}"
-      - "[Dubai]{"entity": "GPE", "role": "departure"}"
-
-  - intent: inform_destination
-    examples: |
-      - "I'm flying to [Tokyo]{"entity": "GPE", "role": "destination"}"
-      - "Destination is [Berlin]{"entity": "GPE", "role": "destination"}"
-      - "I'll land in [Sydney]{"entity": "GPE", "role": "destination"}"
-      - "I need a flight to [Madrid]{"entity": "GPE", "role": "destination"}"
-      - "My trip ends in [Rome]{"entity": "GPE", "role": "destination"}"
-      - "[Tokyo]{"entity": "GPE", "role": "destination"}"
-      - "[Berlin]{"entity": "GPE", "role": "destination"}"
-      - "[Sydney]{"entity": "GPE", "role": "destination"}"
-      - "[Madrid]{"entity": "GPE", "role": "destination"}"
-      - "[Rome]{"entity": "GPE", "role": "destination"}"
-
-  - intent: inform_departure_date
-    examples: |
-      - "The flight is on [October 15]{"entity": "DATE", "role": "departure"}"
-      - "I'll be leaving on [November 2]{"entity": "DATE", "role": "departure"}"
-      - "Departure DATE is [December 20]{"entity": "DATE", "role": "departure"}"
-      - "I'm flying on [October 25]{"entity": "DATE", "role": "departure"}"
-      - "The trip starts on [July 10]{"entity": "DATE", "role": "departure"}"
-      - "[October 15]{"entity": "DATE", "role": "departure"}"
-      - "[November 2]{"entity": "DATE", "role": "departure"}"
-      - "[December 20]{"entity": "DATE", "role": "departure"}"
-      - "[October 25]{"entity": "DATE", "role": "departure"}"
-      - "[July 10]{"entity": "DATE", "role": "departure"}"
+- intent: tell_destination
+  examples: |
+    - destination is [Syria]{"entity": "country", "role": "destination"}
+    - I am traveling to [Mauritius]{"entity": "country", "role": "destination"}
+    - my destination will be [Panama]{"entity": "country", "role": "destination"}
+    - arriving in [Hungary]{"entity": "country", "role": "destination"}
+    - flying to [Georgia]{"entity": "country", "role": "destination"}
+    - my final destination is [Armenia]{"entity": "country", "role": "destination"}
+    - I will travel to [Peru]{"entity": "country", "role": "destination"}
+    - Flights to [Fiji]{"entity": "country", "role": "destination"}
+    - My trip will end in [Zambia]{"entity": "country", "role": "destination"}
+    - destination country is [Jamaica]{"entity": "country", "role": "destination"}
+    - Traveling to [Venezuela]{"entity": "country", "role": "destination"}
+    - I will arrive in [Sri Lanka]{"entity": "country", "role": "destination"}
+    - destination will be [Maldives]{"entity": "country", "role": "destination"}
+    - I will fly to [Papua New Guinea]{"entity": "country", "role": "destination"}
+    - landing in [Mozambique]{"entity": "country", "role": "destination"}
+    - I am heading to [Czechia]{"entity": "country", "role": "destination"}
+    - destination is [Guatemala]{"entity": "country", "role": "destination"}
+    - My next destination will be [Togo]{"entity": "country", "role": "destination"}
+    - I am flying to [Uruguay]{"entity": "country", "role": "destination"}
+    - I am traveling to [Oman]{"entity": "country", "role": "destination"}
+    - My destination is [Madagascar]{"entity": "country", "role": "destination"}.
+    - I will be arriving in [Montenegro]{"entity": "country", "role": "destination"} next week.
+    - I'm flying to [Kuwait]{"entity": "country", "role": "destination"} this Friday.
+    - My travel destination is [Uruguay]{"entity": "country", "role": "destination"}.
+    - The destination will be [New Zealand]{"entity": "country", "role": "destination"}.
+    - I'll be arriving at [Guatemala]{"entity": "country", "role": "destination"} in two days.
+    - I'm heading to [Iceland]{"entity": "country", "role": "destination"}.
+    - I'm traveling to [Brunei]{"entity": "country", "role": "destination"} in a few weeks.
+    - My final stop is [Tunisia]{"entity": "country", "role": "destination"}.
+    - I'll be flying into [Bolivia]{"entity": "country", "role": "destination"} next month.
+    - Landing in [Argentina]{"entity": "country", "role": "destination"}
+    - My next stop is [Sweden]{"entity": "country", "role": "destination"}
+    - I'll end up in [Norway]{"entity": "country", "role": "destination"}
+    - Heading towards [Malaysia]{"entity": "country", "role": "destination"}
+    - Destination set for [Philippines]{"entity": "country", "role": "destination"}
+    - Arriving in [Finland]{"entity": "country", "role": "destination"}
+    - Planning to chill in [Jamaica]{"entity": "country", "role": "destination"}
+    - My trip concludes in [Ethiopia]{"entity": "country", "role": "destination"}
+    - Touching down in [Colombia]{"entity": "country", "role": "destination"}
+    - Final stop: [Indonesia]{"entity": "country", "role": "destination"}
+    - To [Germany]{"entity": "country", "role": "destination"}
+    - Heading [Italy]{"entity": "country", "role": "destination"}
+    - To [Canada]{"entity": "country", "role": "destination"}
+    - Arriving [Argentina]{"entity": "country", "role": "destination"}
+    - Destination [South Korea]{"entity": "country", "role": "destination"}
+    - Heading [China]{"entity": "country", "role": "destination"}
+    - To [New Zealand]{"entity": "country", "role": "destination"}
+    - Arriving [Nepal]{"entity": "country", "role": "destination"}
+    - Destination [Greece]{"entity": "country", "role": "destination"}
+    - To [Cuba]{"entity": "country", "role": "destination"}

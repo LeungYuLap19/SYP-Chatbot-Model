@@ -1,0 +1,24 @@
+Basics
+1. greet
+2. goodbye
+3. thank_you
+
+Flights
+1. check_flights
+  - (city:from) or (airport:from) 
+  - (city:to) or (airport:to)
+  - (date)
+2. inform_departure
+  - (city:from) or (airport:from) 
+3. inform_destination
+  - (city:to) or (airport:to)
+4. inform_date
+  - (date)
+
+5. check_flights_status
+  - (flight_number)
+6. inform_flight_number
+  - (flight_number)
+
+Accommondations
+Travel Recommendations

@@ -1,77 +1,49 @@
 version: "3.1"
 
 intents:
-  # basics
-  - greet
-  - goodbye
-  - thank_you
-  # flights
-  - check_flights
-  - inform_departure
-  - inform_destination
-  - inform_departure_date
+  - reset_form
+  - tell_travel
+  - tell_departure
+  - tell_destination
 
 entities:
-  - GPE
-  - DATE
+  - country
 
-# Slots are variables that store information extracted from user inputs (entities)
 slots:
-  # Flights
-  departure_city:
+  departure:
     type: text
-    influence_conversation: true
+    influence_conversation: false
     mappings:
       - type: from_entity
-        entity: GPE
+        entity: country
         role: departure
-
-  destination_city:
+    
+  destination:
     type: text
-    influence_conversation: true
+    influence_conversation: false
     mappings:
       - type: from_entity
-        entity: GPE
+        entity: country
         role: destination
 
-  departure_date:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: DATE
-        role: departure
-
-# response actions or custom actions are defined here
 responses:
-  # basics
-  utter_greet:
-    - text: "Hello! How can I assist you with your travel plans today?"
+  utter_form_reset:
+  - text: "All slots have been reset."
 
-  utter_goodbye:
-    - text: "Goodbye! Have a great trip!"
+  utter_ask_departure:
+  - text: "Please tell departure."
 
-  utter_thank_you:
-    - text: "You're welcome! Happy to help."
+  utter_ask_destination:
+  - text: "Please tell destination."
 
-  utter_ask_departure_city:
-    - text: "Please provide your departure city."
-
-  utter_ask_destination_city:
-    - text: "Please provide your destination."
-
-  utter_ask_departure_date:
-    - text: "Please provide your departure date."
-
-  utter_checking_flights:
-    - text: "Checking flights from {departure_city} to {destination_city} on {departure_date}"
-
+  utter_travel:
+  - text: "{departure} - {destination}"
+  
 forms:
-  check_flights_form:
+  travel_form:
     required_slots:
-      - departure_city
-      - destination_city
-      - departure_date
+      - departure
+      - destination
 
 session_config:
   session_expiration_time: 60
